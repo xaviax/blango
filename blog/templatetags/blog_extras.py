@@ -5,6 +5,7 @@ from django import template
 from django.utils.html import format_html
 user_model=get_user_model()
 register=template.Library()
+from blog.models import Post
 
 
 @register.filter
@@ -54,3 +55,7 @@ def column(extra_classes=""):
 def endcolumn():
   return format_html('</div>')
 
+@register.inclusion_tag('blog/post-list.html')
+def recent_posts(post):
+  five_posts = Post.objects.exclude(pk=post.pk)[:5]
+  return {"title":"Recent Posts", "posts":five_posts}
