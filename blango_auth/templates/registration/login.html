@@ -1,58 +1,60 @@
 {% extends "base.html" %}
 
-{%load crispy_forms_tags blog_extras %}
+{% load crispy_forms_tags %}
 
-{% block title %} Log In to Blango {% endblock title %}
+{% block title %}Log In to Blango{% endblock title %}
 
 {% block content %}
 
-{% row "justify-content-center" %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    {% if next %}
+      {% if user.is_authenticated %}
+        <div class="alert alert-warning">
+          Your account doesn't have access to this page. To proceed, please login with an account that has access.
+        </div>
+      {% else %}
+        <div class="alert alert-info">
+          Please login to see this page.
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>
 
-{% column "col-md-6" %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3>Log In</h3>
+      </div>
+      <div class="card-body">
+        <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
 
-{% if next %}
+          {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+              {{ form.non_field_errors }}
+            </div>
+          {% endif %}
 
-  {% if user.is_authenticated %}
+          {{ form|crispy }}
 
-<p>
-Your account doesn't have access to this page. To proceed, please login with an account that has access.
-</p>
+          <button type="submit" class="btn btn-primary">
+            Log In
+          </button>
 
-  {% else %}
-  <p>Please login to see this page</p>
-  {%endif%}
-{% endif %}
+          <input type="hidden" name="next" value="{{ next }}">
+        </form>
 
-   {% endcolumn %}
-   {%endrow%}
+        <hr>
+        <p>
+          <a href="{% url 'password_reset' %}">Lost password?</a>
+        </p>
 
-{% row "justify-content-center" %}
-
-  {% column "col-md-6" %}
-
-  <form method="post" action="{% url 'login' %}">
-
-    {% csrf_token %}
-
-    {{form|crispy}}
-
-    <button type="submit" class="btn btn-primary">
-      Log In </button>
-
-      <input type="hidden" name="next" value="{{next}}">
-  </form>
-
-
-  <p>
-
-    <a href="{% url 'password_reset' %}">
-      Lost password?
-    </a>
-
-  </p>
-
-{% endcolumn %}
-{% endrow %}
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock content %}
-
