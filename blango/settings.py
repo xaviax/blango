@@ -195,7 +195,7 @@ class Dev(Configuration):
 
   INTERNAL_IPS = type(str("c"), (), {"__contains__": lambda *a: True})()
 
-  AUTH_USER_MODEL = "blango_auth.user"
+  AUTH_USER_MODEL = "blango_auth.User"
 
  
 
