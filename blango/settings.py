@@ -50,10 +50,12 @@ class Dev(Configuration):
       'django.contrib.sessions',
       'django.contrib.messages',
       'django.contrib.staticfiles',
+      'blango_auth',
       'blog',
       'crispy_forms',
       'crispy_bootstrap5',
       'debug_toolbar',
+      
   ]
 
   MIDDLEWARE = [
@@ -192,6 +194,8 @@ class Dev(Configuration):
   ]  
 
   INTERNAL_IPS = type(str("c"), (), {"__contains__": lambda *a: True})()
+
+  AUTH_USER_MODEL = "blango_auth.user"
 
  
 

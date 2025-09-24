@@ -31,6 +31,23 @@
 
 {% endrow %}
 
+
+{% if post.author.profile %}
+  {% row %}
+      {%column%}
+
+      <h4>About the Author </h4>
+      <p>{{post.author.profile.bio}}</p>
+
+      {%endcolumn%}
+
+      {%endrow%}
+
+      {%endif%}
+
+
+
+
 {% include "blog/post-comments.html" %}
 
 
