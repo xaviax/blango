@@ -1,0 +1,11 @@
+--superuser--
+email: notnotreallymax@gmail.com
+pass: max 
+
+
+--users--
+email:sillymark@gmail.com
+pass:notreally!mark 
+
+email:sillyjaiden@gmail.com 
+pass:notreally!jaiden 
