@@ -22,6 +22,7 @@ import blango_auth.views
 from django_registration.backends.activation.views import RegistrationView
 
 
+
 from blango_auth.forms import BlangoRegistrationForm
 
 print(f"Time zone: {settings.TIME_ZONE}")
@@ -44,6 +45,9 @@ urlpatterns = [
     path("accounts/", include("django_registration.backends.activation.urls")),
 
     path("api/v1/",include("blog.api_urls")),
+
+    path("api/v2/",include("blog.api.urls"))
+    
 
 
 
