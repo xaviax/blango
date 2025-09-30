@@ -35,7 +35,7 @@ def post_list(request):
   if request.method=="GET":
     posts = Post.objects.all()
     #post_as_dict = [post_to_dict(p) for p in posts]
-    return JsonResponse({"data":PostSerializer(posts,manu=True).data})
+    return JsonResponse({"data":PostSerializer(posts,many=True).data})
 
   elif request.method == "POST":
     post_data = json.loads(request.body)
@@ -81,14 +81,4 @@ def post_detail(request,pk):
     return HttpResponse(status=HTTPStatus.NO_CONTENT)
 
   return HttpResponseNotAllowed(["GET","PUT","DELETE"])
-
-
-
-
-
-
-
-
-
-
 
