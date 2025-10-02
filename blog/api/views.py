@@ -18,4 +18,10 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
   serializer_class=PostSerializer
 
 
+class UserDetail(generics.RetrieveAPIView):
+  lookup_field="email"
+  queryset=User.objects.all()
+  serializer_class=UserSerializer
+
+
 
