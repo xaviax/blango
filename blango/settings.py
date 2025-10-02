@@ -56,6 +56,7 @@ class Dev(Configuration):
       'crispy_bootstrap5',
       'debug_toolbar',
       'rest_framework',
+      'rest_framework.authtoken',
       
   ]
 
@@ -201,6 +202,18 @@ class Dev(Configuration):
   EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
   ACCOUNT_ACTIVATION_DAYS = 7
+
+  REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES":[
+      "rest_framework.authentication.BasicAuthentication",
+      "rest_framework.authentication.SessionAuthentication",
+      "rest_framework.authentication.TokenAuthentication",
+    ]
+
+
+
+
+  }
 
 
  
