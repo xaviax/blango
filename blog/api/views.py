@@ -1,4 +1,4 @@
-from rest_framework import generics 
+from rest_framework import generics , viewsets
 
 from blog.api.serializers import *
 from blog.models import *
@@ -22,6 +22,14 @@ class UserDetail(generics.RetrieveAPIView):
   lookup_field="email"
   queryset=User.objects.all()
   serializer_class=UserSerializer
+
+
+class TagViewSet(viewsets.ModelViewSet):
+
+  queryset = Tag.objects.all()
+  serializer_class=TagSerializer
+
+    
 
 
 

@@ -3,8 +3,18 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework.authtoken import views
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
-from blog.api.views import PostList, PostDetail, UserDetail
+from blog.api.views import PostList, PostDetail, UserDetail, TagViewSet
 import os
+from rest_framework.routers import DefaultRouter
+
+
+
+router = DefaultRouter()
+router.register("tags",TagViewSet)
+
+
+
+
 
 
 schema_view = get_schema_view(
@@ -23,6 +33,7 @@ api_urlpatterns = [
     path('users/<str:email>/', UserDetail.as_view(), name="api_user_detail"),
     path("auth/", include("rest_framework.urls")),
     path("token-auth/", views.obtain_auth_token),
+    path("",include(router.urls)),
 ]
 
 api_urlpatterns = format_suffix_patterns(api_urlpatterns)
@@ -40,3 +51,5 @@ urlpatterns = [
         name="schema-swagger-ui",
     ),
 ]
+
+
