@@ -35,6 +35,8 @@ api_urlpatterns = [
     path("auth/", include("rest_framework.urls")),
     path("token-auth/", views.obtain_auth_token),
     path("",include(router.urls)),
+    path("posts/by-time/<str:period_name/>",PostViewSet.as_view({"get":"list"}),
+    name="posts-by-time",)
 ]
 
 #api_urlpatterns = format_suffix_patterns(api_urlpatterns)
