@@ -55,7 +55,7 @@ class PostApiTestCase(TestCase):
 
   def test_post_list(self):
     resp = self.client.get("/api/v2/posts/")
-    data=resp.json()
+    data=resp.json()["results"]
     self.assertEqual(len(data),2)
 
     for post_dict in data:
