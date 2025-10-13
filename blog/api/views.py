@@ -50,7 +50,7 @@ class PostViewSet(viewsets.ModelViewSet):
 
     else:
       queryset=self.queryset.filter(
-      Q(published_at__lte-timezone.now()) | Q(author=self.request.user) 
+      Q(published_at__lte=timezone.now()) | Q(author=self.request.user) 
     )
 
     time_period_name = self.kwargs.get("period_name")

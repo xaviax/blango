@@ -51,7 +51,7 @@ def endrow():
 
 @register.simple_tag
 def column(extra_classes=""):
-  return format_html('<div class="col {}"', extra_classes)
+  return format_html('<div class="col {}">', extra_classes)
 
 @register.simple_tag
 def endcolumn():

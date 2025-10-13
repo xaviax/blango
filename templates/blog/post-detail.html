@@ -45,6 +45,22 @@
 
       {%endif%}
 
+It does 
+{% if post.hero_image %}
+exist..
+  {% row %}
+
+  {% column %}
+      <img class="img-fluid" src="{{  post.hero_image.url  }}">
+      
+  {% endcolumn %}
+
+ {% endrow %}
+
+{% endif %}        
+
+
+
 
 
 
